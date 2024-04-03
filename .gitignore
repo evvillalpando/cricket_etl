@@ -1,0 +1,12 @@
+# Ignore pyc files in __pycache__
+*.pyc
+
+# Ignore venv
+cricket_venv/
+
+# Ignore data files
+data/json_files
+data/zip_files
+
+# Ignore db
+cricket_database.db
