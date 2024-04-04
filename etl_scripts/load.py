@@ -13,16 +13,16 @@ def load():
     cursor = conn.cursor()
 
     # Create a table
-    cursor.execute('DROP TABLE IF EXISTS load_game_data;')
+    cursor.execute('DROP TABLE IF EXISTS load_match_data;')
     cursor.execute('''
-        CREATE TABLE load_game_data (
-            game_id int PRIMARY KEY,
+        CREATE TABLE load_match_data (
+            match_id int PRIMARY KEY,
             info blob,
             innings blob
         );''')
 
     json_files = [file for file in os.listdir('./data/json_files') if file.endswith('.json')]
-    print(f'\t-Loading {len(json_files)} files to cricket_database.load_game_data...')
+    print(f'\t-Loading {len(json_files)} files to cricket_database.load_match_data...')
     for json_file in json_files:
 
         with open(f"./data/json_files/{json_file}", 'r') as file:
@@ -33,7 +33,7 @@ def load():
         innings = json.dumps(data['innings']).replace("'", "''")
 
         cursor.execute(f"""
-            INSERT INTO load_game_data (game_id, info, innings)
+            INSERT INTO load_match_data (match_id, info, innings)
             VALUES ({file_name}, '{info}', '{innings}')
             ;""")
 

@@ -19,3 +19,8 @@ if 'extract' in args:
 
 if 'load' in args:
     load.load()
+
+if 'transform' in args:
+    transformer = transform.Transform(tables=['matches'])
+    transformer.transform_tables()
+    transformer.close_conn()
