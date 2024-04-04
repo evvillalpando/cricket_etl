@@ -15,7 +15,7 @@ class Extract():
         if not os.path.exists(self.zip_files_path):
             os.makedirs(self.zip_files_path)
             print(f"Directory '{self.zip_files_path}' created.")
-            
+
         print("""
 ----------------------
 -- STARTING EXTRACT --
