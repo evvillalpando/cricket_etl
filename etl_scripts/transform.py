@@ -6,11 +6,11 @@ class Transform():
     """
 
     def __init__(self, tables):
-            print("""
+        print("""
 -------------------------------
 --- STARTING TRANSFORMATION ---
 -------------------------------
-                """)
+            """)
 
         self.conn = sqlite3.connect('./cricket_database.db')
         self.cursor = self.conn.cursor()
