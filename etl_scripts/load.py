@@ -12,7 +12,7 @@ def load():
     conn = sqlite3.connect('./cricket_database.db')
     cursor = conn.cursor()
 
-    # Create a table
+    # Create load table for raw jsons
     cursor.execute('DROP TABLE IF EXISTS load_match_data;')
     cursor.execute('''
         CREATE TABLE load_match_data (
@@ -21,13 +21,15 @@ def load():
             innings blob
         );''')
 
+    # Filter non-json files
     json_files = [file for file in os.listdir('./data/json_files') if file.endswith('.json')]
     print(f'\t-Loading {len(json_files)} files to cricket_database.load_match_data...')
     for json_file in json_files:
-
+        # Load each json file in, ignoring "meta" key.
         with open(f"./data/json_files/{json_file}", 'r') as file:
             data = json.load(file)
 
+        # Use filename for match_id
         file_name = json_file.split('.')[0]
         info = json.dumps(data['info']).replace("'", "''")
         innings = json.dumps(data['innings']).replace("'", "''")

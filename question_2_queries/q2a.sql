@@ -1,5 +1,3 @@
-drop view view_question_2a;
-create view view_question_2a as
 with
   teams as (
     SELECT DISTINCT team_1 AS team FROM matches

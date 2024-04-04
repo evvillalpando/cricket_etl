@@ -1,7 +1,5 @@
 select
   batter,
-  sum(batter_runs) as br,
-  count(*) - sum(case when wides > 0 then 1 else 0 end) as bf,
   (sum(batter_runs)*100.0) / (count(*)-sum(case when wides>0 then 1 else 0 end)) as strike_rate
 from
   ball_by_ball

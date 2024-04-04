@@ -3,9 +3,6 @@ import os
 import zipfile
 
 class Extract():
-    """
-
-    """
 
     def __init__(self):
         self.zip_files_path = "./data/zip_files"
@@ -17,8 +14,9 @@ class Extract():
             """)
 
     def download_zip(self, url):
-        print('Beginning download of zip file...')
 
+        print('Beginning download of zip file...')
+        # Use requests to get the zip file from url
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -38,6 +36,7 @@ class Extract():
             print(f"\t-Unsuccessful request on url '{url}'. Reponse status code {response.status_code}")
 
     def extract_zip(self, zip_path):
+        # Extract zip file contents
         print('Beginning extraction of zip file...')
         with zipfile.ZipFile(zip_path, 'r') as zip_to_extract:
             print(f"\t-Extracting {len(zip_to_extract.namelist())} files to {self.json_files_path}")
