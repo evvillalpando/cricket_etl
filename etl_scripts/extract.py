@@ -7,6 +7,15 @@ class Extract():
     def __init__(self):
         self.zip_files_path = "./data/zip_files"
         self.json_files_path = "./data/json_files"
+
+        # Check if directories for file extract exist
+        if not os.path.exists(self.json_files_path):
+            os.makedirs(self.json_files_path)
+            print(f"Directory '{self.json_files_path}' created.")
+        if not os.path.exists(self.zip_files_path):
+            os.makedirs(self.zip_files_path)
+            print(f"Directory '{self.zip_files_path}' created.")
+            
         print("""
 ----------------------
 -- STARTING EXTRACT --
