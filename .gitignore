@@ -2,7 +2,7 @@
 *.pyc
 
 # Ignore venv
-cricket_venv/
+myvenv/
 
 # Ignore data files
 data/json_files/
