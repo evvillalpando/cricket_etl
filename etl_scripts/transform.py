@@ -6,6 +6,12 @@ class Transform():
     """
 
     def __init__(self, tables):
+            print("""
+-------------------------------
+--- STARTING TRANSFORMATION ---
+-------------------------------
+                """)
+
         self.conn = sqlite3.connect('./cricket_database.db')
         self.cursor = self.conn.cursor()
         self.tables = tables
@@ -14,20 +20,19 @@ class Transform():
                 'create_script' : './etl_scripts/sql_scripts/create_matches_table.sql',
                 'insert_script' : './etl_scripts/sql_scripts/insert_matches_data.sql'
             },
-            'innings' : {
-                'create_script' : './etl_scripts/sql_scripts/create_matches_table.sql',
-                'insert_script' : './etl_scripts/sql_scripts/insert_matches_data.sql'
+            'ball_by_ball' : {
+                'create_script' : './etl_scripts/sql_scripts/create_ball_by_ball_table.sql',
+                'insert_script' : './etl_scripts/sql_scripts/insert_ball_by_ball_data.sql'
             }
         }
 
     def transform_tables(self):
         for table in self.tables:
-            print(f'\tCreate/Recreating {table}')
+            print(f'\t-Create/Recreating table {table}')
             self.execute_sql_file(self.table_scripts[table]['create_script'])
-            print("successfully recreated table")
-            print(f'\tInserting data to cricket_database.{table}')
+            print(f'\t-Transforming data to cricket_database.{table}')
             self.execute_sql_file(self.table_scripts[table]['insert_script'])
-            print('success')
+            print(f'\t-cricket_database.{table} ready.\n')
 
         return True
 

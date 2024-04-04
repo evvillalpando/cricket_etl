@@ -21,6 +21,6 @@ if 'load' in args:
     load.load()
 
 if 'transform' in args:
-    transformer = transform.Transform(tables=['matches'])
+    transformer = transform.Transform(tables=['matches', 'ball_by_ball'])
     transformer.transform_tables()
     transformer.close_conn()

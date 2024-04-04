@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS matches;
 CREATE TABLE matches (
-  match_id text PRIMARY KEY,
+  match_id int PRIMARY KEY,
   balls_per_over int,
   match_city text,
   match_start_date date,
@@ -9,6 +9,9 @@ CREATE TABLE matches (
   event_name text,
   match_number int,
   sub_name text,
+  event_group text,
+  event_stage text,
+  info_missing text,
   super_subs text,
   match_gender text,
   match_type text,
