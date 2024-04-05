@@ -1,5 +1,5 @@
 # Reproducing cricket_etl
-1. Ensure sqlite version >= 3.38.0 is installed on your machine. https://www.sqlite.org/download.html
+1. Ensure sqlite version >= 3.38.0 is installed on your machine. SQL code for parsing jsons may error our if using a lesser version. https://www.sqlite.org/download.html
 2. Open CLI tool and change working directory to wherever this repo is cloned.
 2. Create a venv using requirements:
   2a. In terminal or conda prompt, type `python -m venv myvenv`
